@@ -4,7 +4,14 @@ import '../App.css';
 import TaskItem from './taskItem';
 
 class TaskList extends Component{
+  changeStatus = (task) => {
+    this.props.changeStatus(task);
+  }
   render(){
+    var {tasks} = this.props;//var tasks = this.props.task;
+    var elementTask = tasks.map((task, index) => {
+      return <TaskItem key={task.id} index={index} task={task} changeStatus={this.changeStatus}/>
+    });
     return (
       <Table className="mt-10" striped bordered hover>
         <thead>
@@ -30,7 +37,7 @@ class TaskList extends Component{
             </td>
             <td></td>
           </tr>
-          <TaskItem/>
+          {elementTask}
         </tbody>
       </Table>
     );
