@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 
 class TaskItem extends Component{
   showStatus(){
-    // this.props.task.status = !this.props.task.status;
     return (
       <span className={this.props.task.status === true ? "label label-danger" : "label label-info"}
             onClick={this.changeStatus}>
@@ -16,7 +15,14 @@ class TaskItem extends Component{
   changeStatus = () => {
     this.props.task.status = !this.props.task.status;
     this.props.changeStatus(this.props.task);
-    // console.log(this.props.task);
+  }
+
+  deleteTask = () => {
+    this.props.deleteTask(this.props.task);
+  }
+
+  editTask = () => {
+    this.props.editTask(this.props.task);
   }
 
   render(){
@@ -29,10 +35,10 @@ class TaskItem extends Component{
           {this.showStatus()}
         </td>
         <td className="text-center">
-          <Button variant="warning">
+          <Button variant="warning" onClick={this.editTask}>
             <span className="fa fa-pencil mr-5"/>Sửa
           </Button>&nbsp;
-          <Button variant="danger">
+          <Button variant="danger" onClick={this.deleteTask}>
             <span className="fa fa-trash mr-5"/>Xóa
           </Button>
         </td>

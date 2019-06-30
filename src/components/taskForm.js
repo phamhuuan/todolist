@@ -6,9 +6,38 @@ class TaskForm extends Component{
   constructor(props){
     super(props);
     this.state = {
+      // id: this.props.task === null ? '' : this.props.task.id,
+      // name: this.props.task === null ? '' : this.props.task.name,
+      // status: this.props.task === null ? true : this.props.task.status,
+      id: '',
       name: '',
       status: true,
     };
+  }
+
+  componentWillMount(){
+    if(this.props.task && this.props.task.id !== null){
+      this.setState({
+        id: this.props.task.id,
+        name: this.props.task.name,
+        status: this.props.task.status
+      });
+    }else{
+      this.onClear();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if(nextProps && nextProps.task){
+      this.setState({
+        id : nextProps.task.id,
+        name : nextProps.task.name,
+        status : nextProps.task.status
+      });
+    }else{
+      this.onClear();
+    }
+    console.log('componentWillReceiveProps');
   }
 
   isDisplayForm = () => {
@@ -45,7 +74,7 @@ class TaskForm extends Component{
       <div className="panel panel-warning">
         <div className="panel-heading">
           <h3 className="panel-title">
-            Thêm công việc
+            {this.props.task === null ? 'Thêm công việc' : 'Cập nhật công việc'}
             <span className="fa fa-times-circle text-right" onClick={this.isDisplayForm}></span>
           </h3>
         </div>
@@ -72,7 +101,7 @@ class TaskForm extends Component{
               <div className="text-center">
                 <Button type="submit" variant="warning">
                   <span className="fa fa-plus mr-5"></span>
-                  Thêm
+                  Lưu lại
                 </Button>&nbsp;
                 <Button type="button" variant="danger" onClick={this.onClear}>
                   <span className="fa fa-close mr-5"></span>
