@@ -51,16 +51,16 @@ class TaskList extends Component{
       <Table className="mt-10" striped bordered hover>
         <thead>
           <tr>
-            <th width='10%' className="text-center">STT</th>
-            <th width='50%' className="text-center">Tên</th>
+            <th width='5%' className="text-center">STT</th>
+            <th width='45%' className="text-center">Tên</th>
             <th width='20%' className="text-center">Độ quan trọng</th>
-            <th width='20%' className="text-center">Hành động</th>
+            <th width='30%' className="text-center">Hành động</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td width='10%'></td>
-            <td width='50%'>
+            <td width='5%'></td>
+            <td width='45%'>
               <Form.Control type="text" name="filterName" value={filterName} onChange={this.onChange}></Form.Control>
             </td>
             <td width='20%'>
@@ -70,7 +70,7 @@ class TaskList extends Component{
                 <option value={1} >Không quan trọng</option>
               </Form.Control>
             </td>
-            <td width='20%'></td>
+            <td width='30%'></td>
           </tr>
           {elementTask}
         </tbody>

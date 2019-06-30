@@ -29,12 +29,12 @@ class TaskItem extends Component{
     var {task, index} = this.props;
     return (
       <tr>
-        <td>{index+1}</td>
-        <td>{task.name}</td>
-        <td className="text-center"> 
+        <td width='5%'>{index+1}</td>
+        <td width='45%'>{task.name}</td>
+        <td width='20%' className="text-center"> 
           {this.showStatus()}
         </td>
-        <td className="text-center">
+        <td width='30%' className="text-center">
           <Button variant="warning" onClick={this.editTask}>
             <span className="fa fa-pencil mr-5"/>Sửa
           </Button>&nbsp;
