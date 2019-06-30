@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Row, Col, Button} from 'react-bootstrap';
+import {Row, Col, Button, Container} from 'react-bootstrap';
 import './App.css';
 import TaskForm from './components/taskForm';
 import TaskControl from './components/taskControl';
@@ -198,31 +198,29 @@ class App extends Component{
                                                 onReceiveDisplayForm={this.onDisplayForm} 
                                                 task={taskEditting}/> : '';
     return (
-      <div>
-        <div className="container">
-          <div className="text-center">
-            <h1>Quản lý công việc</h1>
-            <hr/>
-          </div>
-          <Row>
-            <Col sm={isDisplayForm === true ? 4 : 0}>
-              {elementForm}
-            </Col>
-            <Col sm={isDisplayForm === true ? 8 : 12}>
-              <Button type="submit" variant="primary" onClick={this.onDisplayForm}>
-                <span className="fa fa-plus mr-5"></span>Thêm công việc
-              </Button>
-              <br/>
-              <TaskControl onSearch={this.onSearch} onSort={this.onSort}/>
-              <TaskList tasks={tasks} 
-                        changeStatus={this.changeStatus} 
-                        deleteTask={this.deleteTask} 
-                        editTask={this.editTask} 
-                        onFilter={this.onFilter}/>
-            </Col>
-          </Row>
+      <Container>
+        <div className="text-center">
+          <h1>Quản lý công việc</h1>
+          <hr/>
         </div>
-      </div>
+        <Row>
+          <Col sm={isDisplayForm === true ? 4 : 0}>
+            {elementForm}
+          </Col>
+          <Col sm={isDisplayForm === true ? 8 : 12}>
+            <Button type="submit" variant="primary" onClick={this.onDisplayForm}>
+              <span className="fa fa-plus mr-5"></span>Thêm công việc
+            </Button>
+            <br/>
+            <TaskControl onSearch={this.onSearch} onSort={this.onSort}/>
+            <TaskList tasks={tasks} 
+                      changeStatus={this.changeStatus} 
+                      deleteTask={this.deleteTask} 
+                      editTask={this.editTask} 
+                      onFilter={this.onFilter}/>
+          </Col>
+        </Row>
+      </Container>
     );
   };
 }
