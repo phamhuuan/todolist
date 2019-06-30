@@ -5,7 +5,7 @@ import TaskForm from './components/taskForm';
 import TaskControl from './components/taskControl';
 import TaskList from './components/taskList';
 // import _ from 'lodash';//lam nhu the nay se import ca thu vien rat nang
-import {filter, findIndex} from 'lodash';
+import {findIndex, filter} from 'lodash';
 
 class App extends Component{
   constructor(props){
@@ -14,7 +14,7 @@ class App extends Component{
       tasks: [],
       isDisplayForm: false,
       taskEditting: null,
-      filter: {
+      filterShow: {
         name: '',
         status: -1,
         nameSearch: '',
@@ -88,7 +88,7 @@ class App extends Component{
 
   changeStatus = (data) => {
     var {tasks} = this.state;
-    var index = findIndex(tasks, (task) => {//k import _ nua nen k dung _.findIndex
+    var index = findIndex(tasks, (task) => {
       return task.id === data.id;
     });
     tasks[index].status = data.status;
@@ -127,23 +127,23 @@ class App extends Component{
 
   onSearch = (nameSearch) => {
     this.setState({
-      filter: {
-        name: this.state.filter.name,
-        status: this.state.filter.status,
+      filterShow: {
+        name: this.state.filterShow.name,
+        status: this.state.filterShow.status,
         nameSearch: nameSearch.toLowerCase(),
       },
-    },()=>{console.log(this.state.filter);});
+    },()=>{console.log(this.state.filterShow);});
   }
 
-  onFilter = (filterName, filterStatus) => {
-    filterStatus = parseInt(filterStatus, 10);//goi +filterStatus se tu doi string -> number
+  onFilter = (filterShowName, filterShowStatus) => {
+    filterShowStatus = parseInt(filterShowStatus, 10);//goi +filterShowStatus se tu doi string -> number
     this.setState({
-      filter: {
-        name: filterName.toLowerCase(),
-        status: filterStatus,
-        nameSearch: this.state.filter.nameSearch,
+      filterShow: {
+        name: filterShowName.toLowerCase(),
+        status: filterShowStatus,
+        nameSearch: this.state.filterShow.nameSearch,
       }
-    },()=>{console.log(this.state.filter);});
+    },()=>{console.log(this.state.filterShow);});
   }
 
   onSort = (sortBy, sortValue) => {
@@ -169,28 +169,28 @@ class App extends Component{
   }
 
   render(){
-    var {tasks, isDisplayForm, taskEditting} = this.state;//var tasks = this.state.tasks;
-    // console.log(filter);
-    if(filter){
-      if(filter.name){
-        tasks = tasks.filter((task) => {
-          return task.name.toLowerCase().indexOf(filter.name) !== -1;
+    var {tasks, isDisplayForm, taskEditting, filterShow} = this.state;//var tasks = this.state.tasks;
+    // console.log(filterShow);
+    if(filterShow){
+      if(filterShow.name){
+        tasks = tasks.filterShow((task) => {
+          return task.name.toLowerCase().indexOf(filterShow.name) !== -1;
         });
       }
-      // if(filter.nameSearch){
-      //   tasks = tasks.filter((task) => {
-      //     return task.name.toLowerCase().indexOf(filter.nameSearch) !== -1;
+      // if(filterShow.nameSearch){
+      //   tasks = tasks.filterShow((task) => {
+      //     return task.name.toLowerCase().indexOf(filterShow.nameSearch) !== -1;
       //   });
       // }
       tasks = filter(tasks, (task) => {
-        return task.name.toLowerCase().indexOf(filter.nameSearch) !== -1;
+        return task.name.toLowerCase().indexOf(filterShow.nameSearch) !== -1;
       });
-      if(filter.status !== null || filter.status !== undefined){//neu if(filter.status) la dang kiem tra !== null !== undefined !== 0
-        //o day luc nao filter.status cung co gia tri r nen khong can if o day nua
+      if(filterShow.status !== null || filterShow.status !== undefined){//neu if(filterShow.status) la dang kiem tra !== null !== undefined !== 0
+        //o day luc nao filterShow.status cung co gia tri r nen khong can if o day nua
         tasks = tasks.filter((task) => {
-          // return task.status === -1 ? task : task.status === filter.status;
-          if(filter.status === -1) return task;
-          else return task.status === (filter.status === 1 ? false : true);
+          // return task.status === -1 ? task : task.status === filterShow.status;
+          if(filterShow.status === -1) return task;
+          else return task.status === (filterShow.status === 1 ? false : true);
         })
       }
     }

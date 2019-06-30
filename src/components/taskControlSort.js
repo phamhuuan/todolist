@@ -50,13 +50,13 @@ class TaskControlSort extends Component{
             <li onClick={() => this.onClick('status', 1, 2)}>
               {/* eslint-disable-next-line */}
               <a role="button" className={value === 2 ? 'sort-selected' : ''}>
-                Trạng thái kích hoạt
+                Quang trọng
               </a>
             </li>
             <li onClick={() => this.onClick('status', -1, 3)}>
               {/* eslint-disable-next-line */}
               <a role="button" className={value === 3 ? 'sort-selected' : ''}>
-                Trạng thái ẩn
+                Không quan trọng
               </a>
             </li>
           </ul>

@@ -89,13 +89,13 @@ class TaskForm extends Component{
                             onChange={this.onChange}/>
             </Form.Group>
             <Form.Group controlId="status">
-              <Form.Label>Trạng thái</Form.Label>
+              <Form.Label>Mức độ quan trọng</Form.Label>
               <Form.Control as="select"
                             name="status"
                             value={this.state.status}
                             onChange={this.onChange}>
-                <option value={true}>Kích hoạt</option>
-                <option value={false}>Ẩn</option>
+                <option value={true}>Quang trọng</option>
+                <option value={false}>Không quan trọng</option>
               </Form.Control>
               <br/>
               <div className="text-center">

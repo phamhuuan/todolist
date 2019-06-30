@@ -53,7 +53,7 @@ class TaskList extends Component{
           <tr>
             <th className="text-center">STT</th>
             <th className="text-center">Tên</th>
-            <th className="text-center">Trạng thái</th>
+            <th className="text-center">Độ quan trọng</th>
             <th className="text-center">Hành động</th>
           </tr>
         </thead>
@@ -66,8 +66,8 @@ class TaskList extends Component{
             <td>
               <Form.Control as="select" name="filterStatus" value={filterStatus} onChange={this.onChange}>
                 <option value={-1}>Tất cả</option>
-                <option value={0} >Kích hoạt</option>
-                <option value={1} >Ẩn</option>
+                <option value={0} >Quang trọng</option>
+                <option value={1} >Không quan trọng</option>
               </Form.Control>
             </td>
             <td></td>

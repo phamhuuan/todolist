@@ -5,9 +5,9 @@ import { Button } from 'react-bootstrap';
 class TaskItem extends Component{
   showStatus(){
     return (
-      <span className={this.props.task.status === true ? "label label-danger" : "label label-info"}
+      <span className={this.props.task.status === true ? "label label-danger" : "label label-success"}
             onClick={this.changeStatus}>
-        {this.props.task.status === true ? 'Kích hoạt' : 'Ẩn'}
+        {this.props.task.status === true ? 'Quang trọng' : 'Không quan trọng'}
       </span>
     );
   }
