@@ -143,12 +143,11 @@ class App extends Component{
         status: filterShowStatus,
         nameSearch: this.state.filterShow.nameSearch,
       }
-    },()=>{console.log(this.state.filterShow);});
+    });
   }
 
   onSort = (sortBy, sortValue) => {
     var tasks = this.state.tasks;
-    console.log(sortBy, sortValue);
     if(sortBy === 'name'){
       tasks.sort((a, b) => {
         if(a.name > b.name) return sortValue;
@@ -173,7 +172,7 @@ class App extends Component{
     // console.log(filterShow);
     if(filterShow){
       if(filterShow.name){
-        tasks = tasks.filterShow((task) => {
+        tasks = tasks.filter((task) => {
           return task.name.toLowerCase().indexOf(filterShow.name) !== -1;
         });
       }
