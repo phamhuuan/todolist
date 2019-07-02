@@ -66,7 +66,7 @@ class TaskList extends Component{
             <td width='20%'>
               <Form.Control as="select" name="filterStatus" value={filterStatus} onChange={this.onChange}>
                 <option value={-1}>Tất cả</option>
-                <option value={0} >Quang trọng</option>
+                <option value={0} >Quan trọng</option>
                 <option value={1} >Không quan trọng</option>
               </Form.Control>
             </td>
